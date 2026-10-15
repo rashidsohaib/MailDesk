@@ -1,0 +1,22 @@
+[package]
+name = "maildesk"
+version = "0.1.0"
+description = "Privacy-first Gmail IMAP/SMTP desktop client"
+authors = ["MailDesk contributors"]
+edition = "2021"
+
+[lib]
+name = "maildesk_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+keyring = { version = "3", features = ["linux-native"] }
+imap = "2.4.1"
+native-tls = "0.2"
+lettre = { version = "0.11", default-features = false, features = ["builder", "smtp-transport", "native-tls"] }
